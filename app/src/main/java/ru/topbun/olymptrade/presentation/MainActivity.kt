@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                 when(val currentState = screenState.value){
                     is TerminalState.Initial -> {}
                     is TerminalState.Result -> {
-                        Log.d("MainActivity", currentState.result.toString())
+                        Terminal(currentState.result)
                     }
                 }
             }
