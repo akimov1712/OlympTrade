@@ -13,7 +13,7 @@ class TerminalViewModel: ViewModel() {
 
     private val apiService = ApiFactory.apiService
 
-    private val _state = MutableStateFlow<TerminalState>(TerminalState.Initial)
+    private val _state = MutableStateFlow<TerminalScreenState>(TerminalScreenState.Initial)
     val state = _state.asStateFlow()
 
     private val exceptionHandler = CoroutineExceptionHandler{_, throwable ->
@@ -22,7 +22,7 @@ class TerminalViewModel: ViewModel() {
 
     private fun getBars() = viewModelScope.launch(exceptionHandler) {
         val result = apiService.loadBars().result
-        _state.value = TerminalState.Result(result)
+        _state.value = TerminalScreenState.Result(result)
     }
 
     init {
